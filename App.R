@@ -10,11 +10,7 @@ library(shinythemes)
 library(maps)
 library(mapproj)
 library(shinydashboard)
-Shelters17 = read.csv("Shelters17.csv")
 
-Shelters2017 <- read.csv("2017-housing-inventory-count.csv")
-
-Shelters2017 <- inner_join(zipcodes, Shelters2017, by = "ZIPCODE")
 
 calls <- read.csv("311.csv")
 
@@ -49,6 +45,12 @@ zipcode = readOGR(dsn = ".",
                   layer = "CAMS_ZIPCODE_PARCEL_SPECIFIC")
 
 zipcode <- spTransform(zipcode, CRS("+proj=longlat +ellps=GRS80"))
+
+Shelters17 = read.csv("Shelters17.csv")
+
+Shelters2017 <- read.csv("2017-housing-inventory-count.csv")
+
+Shelters2017 <- inner_join(zipcodes, Shelters2017, by = "ZIPCODE")
 
 
 #sum categories and join tables
